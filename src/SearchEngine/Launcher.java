@@ -6,7 +6,7 @@
 package SearchEngine;
 
 /**
- * This is t
+ * This is the launcher for the program. it calls the GUI handler and does stuff.
  * @author arvmayes
  */
 public class Launcher {
