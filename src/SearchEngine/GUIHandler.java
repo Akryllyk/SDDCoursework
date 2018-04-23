@@ -14,6 +14,15 @@ import javax.swing.*;
 
 public class GUIHandler extends JFrame implements ActionListener {
 
+    private GUIHandler getme(){
+        return this;
+    }    
+    public GUIHandler() {
+      setSize(820,620);
+      setLocationRelativeTo(null);
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
     private GUIImplementation gui = new GUIImplementation();
 
     @Override
