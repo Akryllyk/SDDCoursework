@@ -5,7 +5,6 @@ package SearchEngine;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author arvmayes
@@ -15,9 +14,11 @@ import javax.swing.*;
 
 public class GUIHandler extends JFrame implements ActionListener {
 
+    private GUIImplementation gui = new GUIImplementation();
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
     }
-    
+
 }

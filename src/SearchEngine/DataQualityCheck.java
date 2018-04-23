@@ -10,5 +10,5 @@ package SearchEngine;
  * @author arvmayes
  */
 public class DataQualityCheck {
-    
+
 }

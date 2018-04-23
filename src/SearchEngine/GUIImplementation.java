@@ -9,6 +9,11 @@ package SearchEngine;
  *
  * @author arvmayes
  */
+import java.sql.*;
+import javax.swing.*;
+
 public class GUIImplementation {
-    
+
+    private DatabaseHandler handler = new DatabaseHandler();
+
 }
