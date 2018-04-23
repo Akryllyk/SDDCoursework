@@ -6,12 +6,13 @@
 package SearchEngine;
 
 /**
- *
+ * This is t
  * @author arvmayes
  */
 public class Launcher {
 
     public static void main(String[] args) {
-        
+     GUIHandler gui = new GUIHandler();
+     gui.setVisible(true);
     }
 }
