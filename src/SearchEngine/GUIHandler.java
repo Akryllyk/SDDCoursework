@@ -27,11 +27,12 @@ public class GUIHandler extends JFrame implements ActionListener {
         searchTerms.setLayout(new BoxLayout(searchTerms, BoxLayout.PAGE_AXIS));
         setSearchTerms();
         setTitleBar();
-        getContentPane().add(searchTerms, BorderLayout.NORTH);
+        getContentPane().add(titleBar, BorderLayout.NORTH);
         getContentPane().add(searchTerms, BorderLayout.WEST);
         
     }
     JPanel searchTerms = new JPanel();
+    JPanel titleBar = new JPanel();
 
     public void setSearchTerms() {
         JRadioButton but1 = new JRadioButton("Long/Lat");
@@ -43,7 +44,8 @@ public class GUIHandler extends JFrame implements ActionListener {
     }
 
     public void setTitleBar(){
-        
+        JLabel title = new JLabel("Crime Stats Search Engine");
+        titleBar.add(title);
     }
     private GUIImplementation gui = new GUIImplementation();
 
