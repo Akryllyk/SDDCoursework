@@ -9,20 +9,34 @@ package SearchEngine;
  *
  * @author arvmayes
  */
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class GUIHandler extends JFrame implements ActionListener {
 
-    private GUIHandler getme(){
+    private GUIHandler getme() {
         return this;
-    }    
-    public GUIHandler() {
-      setSize(820,620);
-      setLocationRelativeTo(null);
-      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    
+
+    public GUIHandler() {
+        super("Crime Search Engine");
+        setSize(820, 620);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSearchTerms();
+        getContentPane().add(searchTerms, BorderLayout.WEST);
+    }
+    JPanel searchTerms = new JPanel();
+
+    public void setSearchTerms() {
+
+        JLabel longLatLabel = new JLabel("Long/Lat");
+        searchTerms.add(longLatLabel);
+        JRadioButton but1 = new JRadioButton();
+        searchTerms.add(but1);
+    }
+
     private GUIImplementation gui = new GUIImplementation();
 
     @Override
