@@ -24,19 +24,27 @@ public class GUIHandler extends JFrame implements ActionListener {
         setSize(820, 620);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        searchTerms.setLayout(new BoxLayout(searchTerms, BoxLayout.PAGE_AXIS));
         setSearchTerms();
+        setTitleBar();
+        getContentPane().add(searchTerms, BorderLayout.NORTH);
         getContentPane().add(searchTerms, BorderLayout.WEST);
+        
     }
     JPanel searchTerms = new JPanel();
 
     public void setSearchTerms() {
-
-        JLabel longLatLabel = new JLabel("Long/Lat");
-        searchTerms.add(longLatLabel);
-        JRadioButton but1 = new JRadioButton();
+        JRadioButton but1 = new JRadioButton("Long/Lat");
         searchTerms.add(but1);
+        JRadioButton but2 = new JRadioButton("LSOA");
+        searchTerms.add(but2);
+        JRadioButton but3 = new JRadioButton("Crime");
+        searchTerms.add(but3);
     }
 
+    public void setTitleBar(){
+        
+    }
     private GUIImplementation gui = new GUIImplementation();
 
     @Override
