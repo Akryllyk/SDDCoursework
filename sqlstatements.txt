@@ -1,0 +1,3 @@
+SELECT * FROM crimedata WHERE Longitude LIKE "input%" OR Latitude LIKE "input%" LIMIT 10
+SELECT * FROM crimedata WHERE LSOA Name LIKE "%input%" LIMIT 10
+SELECT * FROM crimedata WHERE crime type = input LIMIT 10
