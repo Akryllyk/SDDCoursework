@@ -22,7 +22,10 @@ public class GUIHandler extends JFrame implements ActionListener {
     JPanel crimes = new JPanel();
     JComboBox crimeTypes;
     String[] options = {"Choose a type", "Anti-social behaviour", "Bicycle theft", "Burglary", "Criminal damage and arson", "Drugs", "Other crime", "Other theft", "Possession of weapons", "Public order", "Robbery", "Shoplifting", "Theft from the person", "Vehicle crime", "Violence and sexual offences"};
-    //JScrollPane tablePane = new JScrollPane(resultsTable);
+    JTable resultsTable;
+    JScrollPane tableScrollPane = new JScrollPane(resultsTable);
+    JPanel searchButtonPanel = new JPanel();
+    //resultsTable.setFillsViewportHeight(true);
 
     private GUIHandler getme() {
         return this;
@@ -65,10 +68,16 @@ public class GUIHandler extends JFrame implements ActionListener {
         crimeTypes.setPreferredSize(new Dimension(250, 50));
         crimeTypes.setVisible(false);
         crimes.add(crimeTypes);
-
+        
+        JButton searchButton = new JButton("Search");
+        searchButton.setPreferredSize(new Dimension(100,25));
+        searchButtonPanel.add(searchButton);
+        
         getContentPane().add(searchTerms, BorderLayout.WEST);
         getContentPane().add(searchBar, BorderLayout.CENTER);
         getContentPane().add(crimes, BorderLayout.NORTH);
+        getContentPane().add(tableScrollPane, BorderLayout.SOUTH);
+        getContentPane().add(searchButtonPanel, BorderLayout.EAST);
 
         longLat.addActionListener(new ActionListener() {
             @Override
@@ -111,9 +120,23 @@ public class GUIHandler extends JFrame implements ActionListener {
             }
 
         });
+        
+        searchButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do stuff
+            }
+        
+        
+        });
 
     }
-
+    
+    //doesnt work until data passed into it.
+    public JTable createTable(/* data */){
+        JTable table = new JTable(Object[][] rowData, Object[] columnNames);
+        return table;
+    }
     private GUIImplementation gui = new GUIImplementation();
 
     @Override
