@@ -25,7 +25,6 @@ public class GUIHandler extends JFrame implements ActionListener {
     JTable resultsTable = null;
     JScrollPane tableScrollPane = new JScrollPane(resultsTable);
     JPanel searchButtonPanel = new JPanel();
-    //resultsTable.setFillsViewportHeight(true);
 
     private GUIHandler getme() {
         return this;
@@ -137,8 +136,21 @@ public class GUIHandler extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //do stuff
-                
-                
+            GUIImplementation gui = new GUIImplementation();
+            String activeButton = null;
+              if(longLat.isSelected()){
+               resultsTable = gui.longLatSearch(search.getText(), search2.getText());
+               resultsTable.setVisible(true);
+              }  
+              else if(lsoa.isSelected()){
+               resultsTable = gui.lsoaSearch(search.getText());
+               resultsTable.setVisible(true);
+              }
+              if(crimeType.isSelected()){
+               resultsTable = gui.crimeTypeSearch(crimeTypes.getSelectedItem().toString());
+               resultsTable.setVisible(true);
+              }
+                    
             }
 
         });
