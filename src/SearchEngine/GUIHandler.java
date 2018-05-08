@@ -22,7 +22,7 @@ public class GUIHandler extends JFrame implements ActionListener {
     JPanel crimes = new JPanel();
     JComboBox crimeTypes;
     String[] options = {"Choose a type", "Anti-social behaviour", "Bicycle theft", "Burglary", "Criminal damage and arson", "Drugs", "Other crime", "Other theft", "Possession of weapons", "Public order", "Robbery", "Shoplifting", "Theft from the person", "Vehicle crime", "Violence and sexual offences"};
-    JTable resultsTable;
+    JTable resultsTable = null;
     JScrollPane tableScrollPane = new JScrollPane(resultsTable);
     JPanel searchButtonPanel = new JPanel();
     //resultsTable.setFillsViewportHeight(true);
@@ -63,29 +63,28 @@ public class GUIHandler extends JFrame implements ActionListener {
         search2.setMinimumSize(new Dimension(50, 25));
         search2.setPreferredSize(new Dimension(50, 25));
         search2.setVisible(false);
-        
 
         crimeTypes = new JComboBox(options);
         crimeTypes.setPreferredSize(new Dimension(250, 50));
         crimeTypes.setVisible(false);
         crimes.add(crimeTypes);
-        
+
         JButton searchButton = new JButton("Search");
-        searchButton.setPreferredSize(new Dimension(100,25));
+        searchButton.setPreferredSize(new Dimension(100, 25));
         searchButtonPanel.add(searchButton);
-        
+
         JLabel qcLabel = new JLabel("Quality Check");
-        qcLabel.setPreferredSize(new Dimension(100,25));
+        qcLabel.setPreferredSize(new Dimension(100, 25));
         searchButtonPanel.add(qcLabel);
-        
+
         JButton qcNoCrimeID = new JButton("No ID");
-        qcNoCrimeID.setPreferredSize(new Dimension (100,25));
+        qcNoCrimeID.setPreferredSize(new Dimension(100, 25));
         searchButtonPanel.add(qcNoCrimeID);
-        
+
         JButton qcDupCrimeID = new JButton("Dupe ID");
-        qcDupCrimeID.setPreferredSize(new Dimension(100,25));
+        qcDupCrimeID.setPreferredSize(new Dimension(100, 25));
         searchButtonPanel.add(qcDupCrimeID);
-        
+
         getContentPane().add(searchTerms, BorderLayout.WEST);
         getContentPane().add(searchBar, BorderLayout.CENTER);
         getContentPane().add(crimes, BorderLayout.NORTH);
@@ -95,7 +94,7 @@ public class GUIHandler extends JFrame implements ActionListener {
         longLat.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                search.setText("");  
+                search.setText("");
                 searchBar1Label.setText("Longitude:");
                 searchBar1Label.setVisible(true);
                 search.setVisible(true);
@@ -133,40 +132,38 @@ public class GUIHandler extends JFrame implements ActionListener {
             }
 
         });
-        
-        searchButton.addActionListener(new ActionListener(){
+
+        searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //do stuff
             }
-        
-        
+
         });
-        
-        qcNoCrimeID.addActionListener(new ActionListener(){
+
+        qcNoCrimeID.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //do stuff
             }
-        
-        
+
         });
-        qcDupCrimeID.addActionListener(new ActionListener(){
+        qcDupCrimeID.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //do stuff
             }
-        
-        
+
         });
 
     }
-    
+
     //doesnt work until data passed into it.
-    public JTable createTable(/* data */){
+    /* public JTable createTable( data ){
         JTable table = new JTable(Object[][] rowData, Object[] columnNames);
         return table;
     }
+     */
     private GUIImplementation gui = new GUIImplementation();
 
     @Override

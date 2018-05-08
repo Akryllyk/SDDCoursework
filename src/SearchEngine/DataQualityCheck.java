@@ -14,5 +14,28 @@ import java.sql.*;
 public class DataQualityCheck {
 
     private DatabaseHandler handler = new DatabaseHandler();
-    Connection con = handler.handleDbConnection();
+
+    public void noCrimeIDCheck() {
+        try {
+            String query = "SELECT * FROM 'crimedata' WHERE 'Crime ID' = ''";
+            Connection con = handler.handleDbConnection();
+            Statement stmt = con.createStatement();
+
+            ResultSet rs = stmt.executeQuery(query);
+        } catch (SQLException se) {
+            System.out.println(se.getMessage());
+        }
+    }
+
+    public void dupeCrimeIDCheck() {
+        try {
+            String query = "SELECT *, COUNT('Crime ID') FROM 'crimedata' WHERE 'Crime ID' != \"\" GROUP BY 'Crime ID' HAVING COUNT('Crime ID') > 1";
+            Connection con = handler.handleDbConnection();
+            Statement stmt = con.createStatement();
+
+            ResultSet rs = stmt.executeQuery(query);
+        } catch (SQLException se) {
+            System.out.println(se.getMessage());
+        }
+    }
 }
