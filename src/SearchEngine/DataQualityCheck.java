@@ -9,6 +9,10 @@ package SearchEngine;
  *
  * @author arvmayes
  */
+import java.sql.*;
+
 public class DataQualityCheck {
 
+    private DatabaseHandler handler = new DatabaseHandler();
+    Connection con = handler.handleDbConnection();
 }

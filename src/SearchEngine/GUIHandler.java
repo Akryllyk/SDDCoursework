@@ -37,6 +37,7 @@ public class GUIHandler extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         searchTerms.setLayout(new BoxLayout(searchTerms, BoxLayout.PAGE_AXIS));
+        searchButtonPanel.setLayout(new BoxLayout(searchButtonPanel, BoxLayout.PAGE_AXIS));
         JRadioButton longLat = new JRadioButton("Long/Lat");
         searchTerms.add(longLat);
         choice.add(longLat);
@@ -72,6 +73,18 @@ public class GUIHandler extends JFrame implements ActionListener {
         JButton searchButton = new JButton("Search");
         searchButton.setPreferredSize(new Dimension(100,25));
         searchButtonPanel.add(searchButton);
+        
+        JLabel qcLabel = new JLabel("Quality Check");
+        qcLabel.setPreferredSize(new Dimension(100,25));
+        searchButtonPanel.add(qcLabel);
+        
+        JButton qcNoCrimeID = new JButton("No ID");
+        qcNoCrimeID.setPreferredSize(new Dimension (100,25));
+        searchButtonPanel.add(qcNoCrimeID);
+        
+        JButton qcDupCrimeID = new JButton("Dupe ID");
+        qcDupCrimeID.setPreferredSize(new Dimension(100,25));
+        searchButtonPanel.add(qcDupCrimeID);
         
         getContentPane().add(searchTerms, BorderLayout.WEST);
         getContentPane().add(searchBar, BorderLayout.CENTER);
@@ -122,6 +135,23 @@ public class GUIHandler extends JFrame implements ActionListener {
         });
         
         searchButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do stuff
+            }
+        
+        
+        });
+        
+        qcNoCrimeID.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //do stuff
+            }
+        
+        
+        });
+        qcDupCrimeID.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 //do stuff
