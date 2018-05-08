@@ -9,6 +9,7 @@ package SearchEngine;
  *
  * @author arvmayes
  */
+import java.io.*;
 import java.sql.*;
 
 public class DataQualityCheck {
@@ -22,6 +23,10 @@ public class DataQualityCheck {
             Statement stmt = con.createStatement();
 
             ResultSet rs = stmt.executeQuery(query);
+            FileWriter writeNoID = ;
+            while(rs.next()){
+                
+            }
         } catch (SQLException se) {
             System.out.println(se.getMessage());
         }

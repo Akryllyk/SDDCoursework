@@ -23,7 +23,7 @@ public class GUIHandler extends JFrame implements ActionListener {
     JComboBox crimeTypes;
     String[] options = {"Choose a type", "Anti-social behaviour", "Bicycle theft", "Burglary", "Criminal damage and arson", "Drugs", "Other crime", "Other theft", "Possession of weapons", "Public order", "Robbery", "Shoplifting", "Theft from the person", "Vehicle crime", "Violence and sexual offences"};
     JTable resultsTable = null;
-    JScrollPane tableScrollPane = new JScrollPane(resultsTable);
+    JScrollPane tableScrollPane = new JScrollPane();
     JPanel searchButtonPanel = new JPanel();
 
     private GUIHandler getme() {
@@ -87,7 +87,6 @@ public class GUIHandler extends JFrame implements ActionListener {
         getContentPane().add(searchTerms, BorderLayout.WEST);
         getContentPane().add(searchBar, BorderLayout.CENTER);
         getContentPane().add(crimes, BorderLayout.NORTH);
-        getContentPane().add(tableScrollPane, BorderLayout.SOUTH);
         getContentPane().add(searchButtonPanel, BorderLayout.EAST);
 
         longLat.addActionListener(new ActionListener() {
@@ -136,21 +135,34 @@ public class GUIHandler extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //do stuff
-            GUIImplementation gui = new GUIImplementation();
-            String activeButton = null;
-              if(longLat.isSelected()){
-               resultsTable = gui.longLatSearch(search.getText(), search2.getText());
-               resultsTable.setVisible(true);
-              }  
-              else if(lsoa.isSelected()){
-               resultsTable = gui.lsoaSearch(search.getText());
-               resultsTable.setVisible(true);
-              }
-              if(crimeType.isSelected()){
-               resultsTable = gui.crimeTypeSearch(crimeTypes.getSelectedItem().toString());
-               resultsTable.setVisible(true);
-              }
+                GUIImplementation gui = new GUIImplementation();
+                if (longLat.isSelected()) {
+                    resultsTable = gui.longLatSearch(search.getText(), search2.getText());
+                    resultsTable.setVisible(true);
+                    resultsTable.setVisible(true);
+                    tableScrollPane.setViewportView(resultsTable);
+                    getContentPane().add(tableScrollPane, BorderLayout.SOUTH);
+                    tableScrollPane.setVisible(true);
+                } else if (lsoa.isSelected()) {
+                    resultsTable = gui.lsoaSearch(search.getText());
+                    resultsTable.setVisible(true);
+                    tableScrollPane.setViewportView(resultsTable);
+                    getContentPane().add(tableScrollPane, BorderLayout.SOUTH);
+                    tableScrollPane.setVisible(true);
+
+                } else if (crimeType.isSelected()) {
+                    resultsTable = gui.crimeTypeSearch(crimeTypes.getSelectedItem().toString());
+                    resultsTable.setVisible(true);
+                    resultsTable.setVisible(true);
+                    tableScrollPane.setViewportView(resultsTable);
+                    getContentPane().add(tableScrollPane, BorderLayout.SOUTH);
+                    tableScrollPane.setVisible(true);
+                } else {
+                    System.out.println("no dont do that.");
                     
+                }
+                getContentPane().revalidate();
+
             }
 
         });
