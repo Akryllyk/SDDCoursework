@@ -31,7 +31,14 @@ public class DataQualityCheck {
 
             while (rs.next()) {
                 //write to file
+                for (int i = 1; i < 13; i++) {
+                    noIDBufferedWriter.write(rs.getString(i) + ' ');
+                   
+                }
+               noIDBufferedWriter.newLine();
+               
             }
+            noIDFileWriter.close();
         } catch (SQLException se) {
             System.out.println(se.getMessage());
         } catch (IOException e) {
@@ -46,10 +53,24 @@ public class DataQualityCheck {
             String query = "SELECT *, COUNT(`Crime ID`) FROM `crimedata` WHERE `Crime ID` != '' GROUP BY `Crime ID` HAVING COUNT(`Crime ID`) > 1";
             Connection con = handler.handleDbConnection();
             Statement stmt = con.createStatement();
-
+            FileWriter dupeIDFileWriter = new FileWriter("duplicatecrimeid.txt");
+            BufferedWriter noIDBufferedWriter = new BufferedWriter(dupeIDFileWriter);
             ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                //write to file
+                for (int i = 1; i < 14; i++) {
+                    noIDBufferedWriter.write(rs.getString(i) + ' ');
+                   
+                }
+               noIDBufferedWriter.newLine();
+               
+            }
+            dupeIDFileWriter.close();
         } catch (SQLException se) {
             System.out.println(se.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
         }
     }
 }
