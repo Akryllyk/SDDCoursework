@@ -6,13 +6,15 @@
 package SearchEngine;
 
 /**
- * This is the launcher for the program. it calls the GUI handler and does stuff.
+ * This is the launcher for the program. it calls the GUI handler and does
+ * stuff.
+ *
  * @author arvmayes
  */
 public class Launcher {
 
     public static void main(String[] args) {
-     GUIHandler gui = new GUIHandler();
-     gui.setVisible(true);
+        GUIHandler gui = new GUIHandler();
+        gui.setVisible(true);
     }
 }

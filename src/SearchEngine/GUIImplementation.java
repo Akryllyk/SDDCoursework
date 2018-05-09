@@ -18,10 +18,11 @@ public class GUIImplementation {
     private DatabaseHandler handler = new DatabaseHandler();
     String[] columnNames = {"Crime ID", "Month", "Reported by", "Falls Within", "Longitude", "Latitude", "Location", "LSOA code", "LSOA name", "Crime type", "Last outcome category", "Context"};
 
-    public  JTable longLatSearch(String longSearch, String latSearch) {
-      DefaultTableModel model = new DefaultTableModel();
+    //longitute / latitude search
+    public JTable longLatSearch(String longSearch, String latSearch) {
+        DefaultTableModel model = new DefaultTableModel();
         JTable resultsTable = new JTable(model);
-        
+
         try {
             String query = "SELECT * FROM `crimedata` WHERE `Longitude` LIKE '" + longSearch + "%' OR `Latitude` LIKE '" + latSearch + "%' LIMIT 10";
             Connection con = handler.handleDbConnection();
@@ -31,35 +32,31 @@ public class GUIImplementation {
             int columns = rs.getMetaData().getColumnCount();
 
             model.setColumnIdentifiers(columnNames);
-            while (rs.next()){
+            while (rs.next()) {
                 Object[] row = new Object[columns];
                 for (int i = 0; i < row.length; i++) {
-                    row[i] = rs.getObject(i+1);
-                   
+                    row[i] = rs.getObject(i + 1);
+
                 }
                 model.addRow(row);
-                
-                
-                
-                
+
             }
             resultsTable.setModel(model);
-           rs.close();
-           stmt.close();
-           con.close();
+            rs.close();
+            stmt.close();
+            con.close();
         } catch (SQLException se) {
             System.out.println(se.getMessage());
         }
-        
-        
-        
+
         return resultsTable;
     }
 
-    public   JTable lsoaSearch(String lsoaName) {
+    //LSOA Name Search
+    public JTable lsoaSearch(String lsoaName) {
         DefaultTableModel model = new DefaultTableModel();
         JTable resultsTable = new JTable(model);
-        
+
         try {
             String query = "SELECT * FROM `crimedata` WHERE `LSOA Name` LIKE '%" + lsoaName + "%' LIMIT 10";
             Connection con = handler.handleDbConnection();
@@ -69,35 +66,31 @@ public class GUIImplementation {
             int columns = rs.getMetaData().getColumnCount();
 
             model.setColumnIdentifiers(columnNames);
-            while (rs.next()){
+            while (rs.next()) {
                 Object[] row = new Object[columns];
                 for (int i = 0; i < row.length; i++) {
-                    row[i] = rs.getObject(i+1);
-                   
+                    row[i] = rs.getObject(i + 1);
+
                 }
                 model.addRow(row);
-                
-                
-                
-                
+
             }
             resultsTable.setModel(model);
-           rs.close();
-           stmt.close();
-           con.close();
+            rs.close();
+            stmt.close();
+            con.close();
         } catch (SQLException se) {
             System.out.println(se.getMessage());
         }
-        
-        
-        
+
         return resultsTable;
     }
 
+    //search for crime type
     public JTable crimeTypeSearch(String crimeType) {
-DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
         JTable resultsTable = new JTable(model);
-        
+
         try {
             String query = "SELECT * FROM `crimedata` WHERE `Crime type` = '" + crimeType + "' LIMIT 10";
             Connection con = handler.handleDbConnection();
@@ -107,28 +100,23 @@ DefaultTableModel model = new DefaultTableModel();
             int columns = rs.getMetaData().getColumnCount();
 
             model.setColumnIdentifiers(columnNames);
-            while (rs.next()){
+            while (rs.next()) {
                 Object[] row = new Object[columns];
                 for (int i = 0; i < row.length; i++) {
-                    row[i] = rs.getObject(i+1);
-                   
+                    row[i] = rs.getObject(i + 1);
+
                 }
                 model.addRow(row);
-                
-                
-                
-                
+
             }
             resultsTable.setModel(model);
-           rs.close();
-           stmt.close();
-           con.close();
+            rs.close();
+            stmt.close();
+            con.close();
         } catch (SQLException se) {
             System.out.println(se.getMessage());
         }
-        
-        
-        
+
         return resultsTable;
     }
 
