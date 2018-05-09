@@ -19,6 +19,7 @@ public class GUIHandler extends JFrame implements ActionListener {
     JPanel searchTerms = new JPanel();
     JPanel searchBar = new JPanel();
     ButtonGroup choice = new ButtonGroup();
+    ButtonGroup optionChoice = new ButtonGroup();
     JPanel crimes = new JPanel();
     JComboBox crimeTypes;
     String[] options = {"Choose a type", "Anti-social behaviour", "Bicycle theft", "Burglary", "Criminal damage and arson", "Drugs", "Other crime", "Other theft", "Possession of weapons", "Public order", "Robbery", "Shoplifting", "Theft from the person", "Vehicle crime", "Violence and sexual offences"};
@@ -51,6 +52,12 @@ public class GUIHandler extends JFrame implements ActionListener {
         JRadioButton crimeType = new JRadioButton("Crime Type");
         searchTerms.add(crimeType);
         choice.add(crimeType);
+        JRadioButton ascend = new JRadioButton("Ascending");
+        searchTerms.add(ascend);
+        optionChoice.add(ascend);
+        JRadioButton descend = new JRadioButton("Descending");
+        searchTerms.add(descend);
+        optionChoice.add(descend);
 
         //search bars
         JLabel searchBar1Label = new JLabel();
@@ -108,6 +115,7 @@ public class GUIHandler extends JFrame implements ActionListener {
                 search.setVisible(true);
                 searchBar2Label.setText("Latitude:");
                 searchBar2Label.setVisible(true);
+                search2.setText("");
                 search2.setVisible(true);
                 crimeTypes.setVisible(false);
             }
@@ -147,60 +155,70 @@ public class GUIHandler extends JFrame implements ActionListener {
                 //do stuff
                 GUIImplementation gui = new GUIImplementation();
                 if (longLat.isSelected()) {
-                    resultsTable = gui.longLatSearch(search.getText(), search2.getText());
+                    if (descend.isSelected()) {
+                        resultsTable = gui.longLatSearchDescending(search.getText(), search2.getText());
+                    } else {
+                        resultsTable = gui.longLatSearchAscending(search.getText(), search2.getText());
+                    }
                     resultsTable.setVisible(true);
                     resultsTable.setVisible(true);
                     tableScrollPane.setViewportView(resultsTable);
                     getContentPane().add(tableScrollPane, BorderLayout.SOUTH);
                     tableScrollPane.setVisible(true);
+                    getContentPane().revalidate();
                 } else if (lsoa.isSelected()) {
-                    resultsTable = gui.lsoaSearch(search.getText());
+                    if (descend.isSelected()) {
+                        resultsTable = gui.lsoaSearchDescending(search.getText());
+                    } else {
+                        resultsTable = gui.lsoaSearchAscending(search.getText());
+                    }
                     resultsTable.setVisible(true);
                     tableScrollPane.setViewportView(resultsTable);
                     getContentPane().add(tableScrollPane, BorderLayout.SOUTH);
                     tableScrollPane.setVisible(true);
+                    getContentPane().revalidate();
 
                 } else if (crimeType.isSelected()) {
-                    resultsTable = gui.crimeTypeSearch(crimeTypes.getSelectedItem().toString());
+                    if (descend.isSelected()) {
+                        resultsTable = gui.crimeTypeSearchDescending(crimeTypes.getSelectedItem().toString());
+                    } else {
+                        resultsTable = gui.crimeTypeSearchAscending(crimeTypes.getSelectedItem().toString());
+                    }
                     resultsTable.setVisible(true);
                     resultsTable.setVisible(true);
                     tableScrollPane.setViewportView(resultsTable);
                     getContentPane().add(tableScrollPane, BorderLayout.SOUTH);
                     tableScrollPane.setVisible(true);
+                    getContentPane().revalidate();
                 } else {
+                    try {
                     JFrame noOption = new JFrame();
                     //create new thread
-                    Thread temp = new Thread(new Runnable() {
-                        public void run() {
+                    JDialog j;
                             //new text box
                             JPanel pan = new JPanel();
                             pan.setLayout(new FlowLayout());
                             pan.add(new JLabel("No, don't do that."));
                             //new dialog
-                            JDialog j = new JDialog(noOption, "Stop", false);
+                            j = new JDialog(noOption, "Stop", false);
                             j.setLocation(new Point(1090, 240));
                             j.setSize(160, 74);
                             j.add(pan);
                             j.setVisible(true);
-                            //prioritse the main game
-                            noOption.toFront();
-                            //pause the thread
-                            try {
-                                Thread.sleep(1500);
-                            } catch (Exception e) {
+                            
+                            noOption.toFront();  
+  
+                        
+
+                    if(j.isVisible() == false){
+                                throw new GUIBrokeException();
                             }
-                            //destroy the dialog
-                            j.dispose();
-                        }
-                    });
-                    //run the thread
-                    temp.start();
 
+                    }catch(GUIBrokeException gbe){
+                     System.err.println("no");
+                    }
                 }
-                getContentPane().revalidate();
-
             }
-
         });
 
         qcNoCrimeID.addActionListener(new ActionListener() {
