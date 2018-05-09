@@ -27,7 +27,7 @@ public class GUIHandler extends JFrame implements ActionListener {
     JScrollPane tableScrollPane = new JScrollPane();
     JPanel searchButtonPanel = new JPanel();
 
-    private GUIHandler getme() {
+    public GUIHandler getMe() {
         return this;
     }
 
@@ -156,9 +156,9 @@ public class GUIHandler extends JFrame implements ActionListener {
                 GUIImplementation gui = new GUIImplementation();
                 if (longLat.isSelected()) {
                     if (descend.isSelected()) {
-                        resultsTable = gui.longLatSearchDescending(search.getText(), search2.getText());
+                        resultsTable = gui.longLatSearch(search.getText(), search2.getText(), "DESC");
                     } else {
-                        resultsTable = gui.longLatSearchAscending(search.getText(), search2.getText());
+                        resultsTable = gui.longLatSearch(search.getText(), search2.getText(), "ASC");
                     }
                     resultsTable.setVisible(true);
                     resultsTable.setVisible(true);
@@ -168,9 +168,9 @@ public class GUIHandler extends JFrame implements ActionListener {
                     getContentPane().revalidate();
                 } else if (lsoa.isSelected()) {
                     if (descend.isSelected()) {
-                        resultsTable = gui.lsoaSearchDescending(search.getText());
+                        resultsTable = gui.lsoaSearch(search.getText(),"DESC");
                     } else {
-                        resultsTable = gui.lsoaSearchAscending(search.getText());
+                        resultsTable = gui.lsoaSearch(search.getText(), "ASC");
                     }
                     resultsTable.setVisible(true);
                     tableScrollPane.setViewportView(resultsTable);
@@ -180,9 +180,9 @@ public class GUIHandler extends JFrame implements ActionListener {
 
                 } else if (crimeType.isSelected()) {
                     if (descend.isSelected()) {
-                        resultsTable = gui.crimeTypeSearchDescending(crimeTypes.getSelectedItem().toString());
+                        resultsTable = gui.crimeTypeSearch(crimeTypes.getSelectedItem().toString(), "DESC");
                     } else {
-                        resultsTable = gui.crimeTypeSearchAscending(crimeTypes.getSelectedItem().toString());
+                        resultsTable = gui.crimeTypeSearch(crimeTypes.getSelectedItem().toString(), "ASC");
                     }
                     resultsTable.setVisible(true);
                     resultsTable.setVisible(true);
@@ -242,14 +242,6 @@ public class GUIHandler extends JFrame implements ActionListener {
         });
 
     }
-
-    //doesnt work until data passed into it.
-    /* public JTable createTable( data ){
-        JTable table = new JTable(Object[][] rowData, Object[] columnNames);
-        return table;
-    }
-     */
-    private GUIImplementation gui = new GUIImplementation();
 
     @Override
     public void actionPerformed(ActionEvent e) {
