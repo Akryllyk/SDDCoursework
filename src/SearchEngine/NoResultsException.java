@@ -9,9 +9,11 @@ package SearchEngine;
  *
  * @author arvmayes
  */
-public class NoResultsException extends Exception{
-    public NoResultsException(){
-    
-}
-    
+public class NoResultsException extends Exception {
+
+    public NoResultsException() {
+        System.err.println("The database has no data, please try again.");
+
+    }
+
 }

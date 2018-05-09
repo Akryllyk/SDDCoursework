@@ -16,15 +16,13 @@ public class DatabaseHandler {
     public Connection handleDbConnection() {
         Connection con = null;
         try {
-            String username = "arvmayes";
-            String password = "testtest";
+            String username = "";
+            String password = "";
             Class.forName("com.mysql.jdbc.Driver");
 
             con = DriverManager.getConnection("jdbc:mysql://lamp.scim.brad.ac.uk:3306/arvmayes", username, password);
-        } catch (ClassNotFoundException cnfe) {
-            System.out.println(cnfe.getMessage());
-        } catch (SQLException se) {
-            System.out.println(se.getMessage());
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
         }
         return con;
     }

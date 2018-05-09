@@ -13,10 +13,10 @@ import java.io.*;
 import java.sql.*;
 
 public class DataQualityCheck {
-    
+
     //create a Database Handler object.
     private DatabaseHandler handler = new DatabaseHandler();
-    
+
     //search for no crime IDs
     public void noCrimeIDCheck() {
 
@@ -33,10 +33,10 @@ public class DataQualityCheck {
                 //write to file
                 for (int i = 1; i < 13; i++) {
                     noIDBufferedWriter.write(rs.getString(i) + ' ');
-                   
+
                 }
-               noIDBufferedWriter.newLine();
-               
+                noIDBufferedWriter.newLine();
+
             }
             rs.close();
             stmt.close();
@@ -49,7 +49,7 @@ public class DataQualityCheck {
             System.exit(0);
         }
     }
-    
+
     //search for duplicate crime IDs
     public void dupeCrimeIDCheck() {
         try {
@@ -63,10 +63,10 @@ public class DataQualityCheck {
                 //write to file
                 for (int i = 1; i < 14; i++) {
                     noIDBufferedWriter.write(rs.getString(i) + ' ');
-                   
+
                 }
-               noIDBufferedWriter.newLine();
-               
+                noIDBufferedWriter.newLine();
+
             }
             dupeIDFileWriter.close();
         } catch (SQLException se) {

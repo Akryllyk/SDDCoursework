@@ -168,7 +168,7 @@ public class GUIHandler extends JFrame implements ActionListener {
                     getContentPane().revalidate();
                 } else if (lsoa.isSelected()) {
                     if (descend.isSelected()) {
-                        resultsTable = gui.lsoaSearch(search.getText(),"DESC");
+                        resultsTable = gui.lsoaSearch(search.getText(), "DESC");
                     } else {
                         resultsTable = gui.lsoaSearch(search.getText(), "ASC");
                     }
@@ -191,30 +191,28 @@ public class GUIHandler extends JFrame implements ActionListener {
                     getContentPane().revalidate();
                 } else {
                     try {
-                    JFrame noOption = new JFrame();
-                    //create new thread
-                    JDialog j;
-                            //new text box
-                            JPanel pan = new JPanel();
-                            pan.setLayout(new FlowLayout());
-                            pan.add(new JLabel("No, don't do that."));
-                            //new dialog
-                            j = new JDialog(noOption, "Stop", false);
-                            j.setLocation(new Point(1090, 240));
-                            j.setSize(160, 74);
-                            j.add(pan);
-                            j.setVisible(true);
-                            
-                            noOption.toFront();  
-  
-                        
+                        JFrame noOption = new JFrame();
+                        //create new thread
+                        JDialog j;
+                        //new text box
+                        JPanel pan = new JPanel();
+                        pan.setLayout(new FlowLayout());
+                        pan.add(new JLabel("No, don't do that."));
+                        //new dialog
+                        j = new JDialog(noOption, "Stop", false);
+                        j.setLocation(new Point(1090, 240));
+                        j.setSize(160, 74);
+                        j.add(pan);
+                        j.setVisible(true);
 
-                    if(j.isVisible() == false){
-                                throw new GUIBrokeException();
-                            }
+                        noOption.toFront();
 
-                    }catch(GUIBrokeException gbe){
-                     System.err.println("no");
+                        if (j.isVisible() == false) {
+                            throw new GUIBrokeException();
+                        }
+
+                    } catch (GUIBrokeException gbe) {
+                        System.err.println("no");
                     }
                 }
             }

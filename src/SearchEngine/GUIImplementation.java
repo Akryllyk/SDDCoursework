@@ -24,7 +24,7 @@ public class GUIImplementation {
         JTable resultsTable = new JTable(model);
 
         try {
-            String query = "SELECT * FROM `crimedata` WHERE `Longitude` LIKE '" + longSearch + "%' OR `Latitude` LIKE '" + latSearch + "%' ORDER BY `Crime ID` " + sort + " LIMIT 10";
+            String query = "SELECT * FROM `crimedata` WHERE `Longitude` LIKE '" + longSearch + "%' OR `Latitude` LIKE '" + latSearch + "%' ORDER BY `Longitude` " + sort + " LIMIT 10";
             Connection con = handler.handleDbConnection();
             Statement stmt = con.createStatement();
 
@@ -51,7 +51,6 @@ public class GUIImplementation {
 
         return resultsTable;
     }
-    
 
     //LSOA Name Search
     public JTable lsoaSearch(String lsoaName, String sort) {
@@ -86,14 +85,14 @@ public class GUIImplementation {
 
         return resultsTable;
     }
-    
-  //search for crime type
+
+    //search for crime type
     public JTable crimeTypeSearch(String crimeType, String sort) {
         DefaultTableModel model = new DefaultTableModel();
         JTable resultsTable = new JTable(model);
 
         try {
-            String query = "SELECT * FROM `crimedata` WHERE `Crime type` = '" + crimeType + "' ORDER BY `Crime ID` DESC LIMIT 10";
+            String query = "SELECT * FROM `crimedata` WHERE `Crime type` = '" + crimeType + "' ORDER BY `Month` DESC LIMIT 10";
             Connection con = handler.handleDbConnection();
             Statement stmt = con.createStatement();
 

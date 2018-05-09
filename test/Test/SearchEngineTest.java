@@ -45,20 +45,21 @@ public class SearchEngineTest extends junit.framework.TestCase {
         DatabaseHandler handler = new DatabaseHandler();
         Connection test = handler.handleDbConnection();
         try {
-            assertEquals(test.getCatalog(), "arvmayes");
+                                    /* change to your username.*/
+            assertEquals(test.getCatalog(), "");
         } catch (SQLException se) {
             System.out.println(se.getMessage());
         }
 
     }
-    
+
     @Test
-    public void testGUI(){
+    public void testGUI() {
         GUIHandler gui = new GUIHandler();
         GUIHandler gui2 = gui.getMe();
-        try{
+        try {
             assertEquals(gui2.getName(), gui.getName());
-        } catch (Exception e){
+        } catch (Exception e) {
         }
     }
     // TODO add test methods here.

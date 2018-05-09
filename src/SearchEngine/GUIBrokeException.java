@@ -10,7 +10,8 @@ package SearchEngine;
  * @author arvmayes
  */
 public class GUIBrokeException extends Exception {
-    public GUIBrokeException(){
-        
+
+    public GUIBrokeException() {
+        System.err.println("The GUI hasn't loaded something, please try again.");
     }
 }
