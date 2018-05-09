@@ -185,7 +185,6 @@ public class GUIHandler extends JFrame implements ActionListener {
                         resultsTable = gui.crimeTypeSearch(crimeTypes.getSelectedItem().toString(), "ASC");
                     }
                     resultsTable.setVisible(true);
-                    resultsTable.setVisible(true);
                     tableScrollPane.setViewportView(resultsTable);
                     getContentPane().add(tableScrollPane, BorderLayout.SOUTH);
                     tableScrollPane.setVisible(true);

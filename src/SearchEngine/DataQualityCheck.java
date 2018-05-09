@@ -38,6 +38,9 @@ public class DataQualityCheck {
                noIDBufferedWriter.newLine();
                
             }
+            rs.close();
+            stmt.close();
+            con.close();
             noIDFileWriter.close();
         } catch (SQLException se) {
             System.out.println(se.getMessage());
